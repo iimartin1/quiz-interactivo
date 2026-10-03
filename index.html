@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz interactivo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Quiz de desarrollo web</h1>
+
+    <!-- Pantalla 1: inicio -->
+    <section id="pantalla-inicio" class="pantalla">
+      <p class="texto-suave">
+        Pon a prueba tus conocimientos de HTML, CSS, JavaScript y Git.
+      </p>
+      <button type="button" id="comenzar" class="boton">Comenzar</button>
+    </section>
+
+    <!-- Pantalla 2: pregunta (datos de ejemplo) -->
+    <section id="pantalla-pregunta" class="pantalla">
+      <div class="encabezado-pregunta">
+        <p id="numero-pregunta">Pregunta 1 de 5</p>
+        <p>Puntaje: <strong id="puntaje">0</strong></p>
+      </div>
+
+      <div class="progreso" role="progressbar" aria-label="Progreso del quiz">
+        <div id="barra" class="barra" style="width: 20%"></div>
+      </div>
+
+      <h2 id="pregunta" class="pregunta">¿Qué significa HTML?</h2>
+
+      <div id="opciones" class="opciones">
+        <button type="button" class="opcion">Lenguaje de estilos</button>
+        <button type="button" class="opcion correcta">Lenguaje de marcado de hipertexto</button>
+        <button type="button" class="opcion incorrecta">Lenguaje de programación</button>
+        <button type="button" class="opcion">Base de datos</button>
+      </div>
+
+      <p id="retroalimentacion" class="retroalimentacion" aria-live="polite">Ejemplo de mensaje</p>
+      <button type="button" id="siguiente" class="boton">Siguiente</button>
+    </section>
+
+    <!-- Pantalla 3: resultado (datos de ejemplo) -->
+    <section id="pantalla-resultado" class="pantalla">
+      <h2 id="resultado-titulo">¡Quiz terminado!</h2>
+      <p id="resultado-puntaje" class="resultado-puntaje">4 / 5</p>
+      <p id="resultado-mensaje" class="texto-suave">¡Muy bien! Dominas lo básico.</p>
+      <button type="button" id="reiniciar" class="boton">Intentar de nuevo</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
