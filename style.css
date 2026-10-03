@@ -36,13 +36,6 @@ h1 {
   gap: 16px;
 }
 
-/* Separación entre pantallas mientras las ves todas juntas */
-.pantalla + .pantalla {
-  margin-top: 32px;
-  padding-top: 32px;
-  border-top: 1px dashed #3d3d56;
-}
-
 .texto-suave {
   color: #9ca3af;
   text-align: center;
