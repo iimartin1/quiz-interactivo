@@ -68,6 +68,7 @@ const contenedorOpciones = document.getElementById("opciones");
 const retroalimentacion = document.getElementById("retroalimentacion");
 
 const resultadoPuntaje = document.getElementById("resultado-puntaje");
+const resultadoRecord = document.getElementById("resultado-record");
 const resultadoMensaje = document.getElementById("resultado-mensaje");
 
 // ===== 3. Estado del quiz =====
@@ -189,8 +190,31 @@ function mensajeFinal(porcentaje) {
 function mostrarResultado() {
   const total = preguntas.length;
   const porcentaje = Math.round((puntaje / total) * 100);
+  let mejorPuntaje = null;
+
+  try {
+    const puntajeGuardado = localStorage.getItem("mejorPuntaje");
+    if (puntajeGuardado !== null) {
+      const valorGuardado = Number(puntajeGuardado);
+      if (Number.isInteger(valorGuardado) && valorGuardado >= 0) {
+        mejorPuntaje = valorGuardado;
+      }
+    }
+  } catch (error) {
+    console.warn("No se pudo leer el mejor puntaje guardado.", error);
+  }
+
+  if (mejorPuntaje === null || puntaje > mejorPuntaje) {
+    mejorPuntaje = puntaje;
+    try {
+      localStorage.setItem("mejorPuntaje", String(mejorPuntaje));
+    } catch (error) {
+      console.warn("No se pudo guardar el mejor puntaje.", error);
+    }
+  }
 
   resultadoPuntaje.textContent = `${puntaje} / ${total}`;
+  resultadoRecord.textContent = `Tu récord: ${mejorPuntaje} / ${total}`;
   resultadoMensaje.textContent = `${mensajeFinal(porcentaje)} (${porcentaje}%)`;
   mostrarPantalla("resultado");
   botonReiniciar.focus();
